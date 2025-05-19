@@ -44,8 +44,8 @@ Este projeto é uma aplicação de gerenciamento de tarefas, desenvolvida como p
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/seurepo.git
-   cd seurepo
+   git clone https://github.com/seuusuario/TodoAPP.git
+   cd TodoAPP
    ```
 
 2. Restaure os pacotes:
@@ -60,7 +60,7 @@ Este projeto é uma aplicação de gerenciamento de tarefas, desenvolvida como p
 
 4. Acesse no navegador:
    ```
-   http://localhost:5000/swagger
+   http://localhost:5241/swagger/index.html
    ```
 
 ---
