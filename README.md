@@ -24,8 +24,8 @@ Este projeto é uma aplicação de gerenciamento de tarefas, desenvolvida como p
 ├── Application            # Camada de aplicação (DTOs, Services, Interfaces)
 ├── Domain                 # Camada de domínio (Entidades, Enums, Contratos)
 ├── Infrastructure         # Camada de persistência (Data, Repositories)
-├── Tests                  # Testes unitários
-└── README.md              # Documentação do projeto
+└── Tests                  # Testes unitários
+
 ```
 
 ---
