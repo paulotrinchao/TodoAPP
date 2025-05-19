@@ -11,8 +11,10 @@ Este projeto é uma aplicação de gerenciamento de tarefas, desenvolvida como p
 - Entity Framework Core (com SQL Server e InMemory)
 - xUnit + Moq (testes unitários)
 - Swagger (OpenAPI)
-- Clean Architecture + DDD
-
+- Clean Architecture
+- DDD
+- Design pattern Unit of work
+- Boas Práticas de desenvolvimento(SOLID, Clean Code, KISS, YAGNI, DRY, Object Calisthenics)
 ---
 
 ## 📦 Estrutura do Projeto
