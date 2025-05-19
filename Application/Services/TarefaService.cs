@@ -23,7 +23,7 @@ namespace Application.Services
             };
 
             await _repository.Tarefas.AddAsync(tarefa);
-           _repository.Commit();
+            _repository.Commit();
             return tarefa;
         }
         public async Task<IEnumerable<Tarefa>> ListarAsync(StatusTarefa? status, DateTime? vencimento)
@@ -39,8 +39,9 @@ namespace Application.Services
             return tarefas;
         }
 
-        public async Task<Tarefa> ObterPorIdAsync(int id) =>
-            await _repository.Tarefas.GetByIdAsync(id);
+        public async Task<Tarefa?> ObterPorIdAsync(int id) =>
+             await _repository.Tarefas.GetByIdAsync(id);
+
 
         public async Task AtualizarAsync(int id, TarefaDto dto)
         {
@@ -51,10 +52,10 @@ namespace Application.Services
             tarefa.Descricao = dto.Descricao;
             tarefa.DataVencimento = dto.DataVencimento;
             tarefa.Status = dto.Status;
-           
+
 
             await _repository.Tarefas.UpdateAsync(tarefa);
-             _repository.Commit();
+            _repository.Commit();
         }
 
         public async Task RemoverAsync(int id)
