@@ -1,4 +1,5 @@
-﻿using Application.DTOs;
+﻿using System.Linq.Expressions;
+using Application.DTOs;
 using Application.Services;
 using Domain.Entities;
 using Domain.Enums;
@@ -50,7 +51,11 @@ namespace Tests.Services
         public async Task ListarAsync_DeveRetornarTodasAsTarefas()
         {
             var tarefas = new List<Tarefa> { GetTarefa(1), GetTarefa(2) };
-            _tarefaRepoMock.Setup(r => r.GetAllAsync()).ReturnsAsync(tarefas);
+
+            _tarefaRepoMock
+                .Setup(r => r.FindAsync(It.IsAny<Expression<Func<Tarefa, bool>>>()))
+                .ReturnsAsync((Expression<Func<Tarefa, bool>> predicate) =>
+                    tarefas.Where(predicate.Compile()).ToList());
 
             var result = await _service.ListarAsync(null, null);
 
@@ -65,7 +70,10 @@ namespace Tests.Services
                 new Tarefa { Status = StatusTarefa.Pendente },
                 new Tarefa { Status = StatusTarefa.Concluido }
             };
-            _tarefaRepoMock.Setup(r => r.GetAllAsync()).ReturnsAsync(tarefas);
+            _tarefaRepoMock
+                .Setup(r => r.FindAsync(It.IsAny<Expression<Func<Tarefa, bool>>>()))
+                .ReturnsAsync((Expression<Func<Tarefa, bool>> predicate) =>
+                    tarefas.Where(predicate.Compile()).ToList());
 
             var result = await _service.ListarAsync(StatusTarefa.Concluido, null);
 
@@ -82,7 +90,11 @@ namespace Tests.Services
                 new() { DataVencimento = data },
                 new() { DataVencimento = data.AddDays(1) }
             };
-            _tarefaRepoMock.Setup(r => r.GetAllAsync()).ReturnsAsync(tarefas);
+
+            _tarefaRepoMock
+                .Setup(r => r.FindAsync(It.IsAny<Expression<Func<Tarefa, bool>>>()))
+                .ReturnsAsync((Expression<Func<Tarefa, bool>> predicate) =>
+                    tarefas.Where(predicate.Compile()).ToList());
 
             var result = await _service.ListarAsync(null, data);
 

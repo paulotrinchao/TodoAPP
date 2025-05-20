@@ -28,15 +28,11 @@ namespace Application.Services
         }
         public async Task<IEnumerable<Tarefa>> ListarAsync(StatusTarefa? status, DateTime? vencimento)
         {
-            var tarefas = await _repository.Tarefas.GetAllAsync();
-
-            if (status.HasValue)
-                tarefas = tarefas.Where(t => t.Status == status);
-
-            if (vencimento.HasValue)
-                tarefas = tarefas.Where(t => t?.DataVencimento?.Date == vencimento.Value.Date);
-
-            return tarefas;
+          
+            return await _repository.Tarefas.FindAsync(t =>
+                                                        (!status.HasValue || t.Status == status.Value) &&
+                                                        (!vencimento.HasValue || (t.DataVencimento.HasValue && t.DataVencimento.Value.Date == vencimento.Value.Date))
+                                                       );
         }
 
         public async Task<Tarefa?> ObterPorIdAsync(int id) =>
