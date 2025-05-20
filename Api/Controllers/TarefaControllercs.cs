@@ -37,7 +37,7 @@ namespace Api.Controllers
         [HttpGet]
         [SwaggerOperation(Summary = "Listar tarefas com filtro opcional por status e data de vencimento.")]
         public async Task<IActionResult> Listar([FromQuery, SwaggerParameter("Status da tarefa: 0 - Pendente, 1 - Em Andamento, 2 - Concluido")] StatusTarefa? status, 
-                                                [FromQuery, SwaggerParameter("Filtra pela data de vencimento")] DateTime? vencimento)
+                                                [FromQuery, SwaggerParameter("Data de vencimento : yyyy-mm-dd")] DateTime? vencimento)
         {
             var tarefas = await _service.ListarAsync(status, vencimento);
             return Ok(tarefas);

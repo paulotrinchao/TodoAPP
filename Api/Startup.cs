@@ -1,9 +1,5 @@
-﻿using Application.Interfaces;
-using Application.Services;
-using Domain.Interfaces;
-using Infrastructure.Data;
-using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using Application;
+using Infrastructure;
 
 namespace Api
 {
@@ -18,7 +14,7 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // 1. Configuração de Controllers e Swagger
+         
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
@@ -26,15 +22,10 @@ namespace Api
                 c.EnableAnnotations();
             });
 
-            // 2. Configuração do banco de dados (exemplo com SQL Server)
-            services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            // 3. Injeção de dependências da aplicação
-            services.AddScoped<ITarefaService, TarefaService>();
-            services.AddTransient<ITarefaRepository, TarefaRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-
+         
+            services.AddApplication()
+                     .AddDBImemory(); // injetar para uso com banco em memoria
+                  //.AddSqlServer(Configuration); // injetar para uso com sql server
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
