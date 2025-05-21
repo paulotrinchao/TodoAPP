@@ -46,7 +46,7 @@ Este projeto é uma aplicação de gerenciamento de tarefas, desenvolvida como p
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seuusuario/TodoAPP.git
+   git clone https://github.com/paulotrinchao/TodoAPP.git
    cd TodoAPP
    ```
 
