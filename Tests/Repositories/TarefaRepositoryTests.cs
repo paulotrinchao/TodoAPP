@@ -3,6 +3,8 @@ using Domain.Enums;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace Tests.Repositories
 {
@@ -18,11 +20,13 @@ namespace Tests.Repositories
 
             _entityMoq = CriarTarefa(1, "Tarefa 1", "Descricao 1", StatusTarefa.EmAndamento, DateTime.Now);
             _tarefasMoq = CriarTarefas();
+
+            var loggerMock = new Mock<ILogger<AppDbContext>>();
             var options = new DbContextOptionsBuilder<AppDbContext>()
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) 
                 .Options;
 
-            _context = new AppDbContext(options);
+            _context = new AppDbContext(options,loggerMock.Object);
             _repository = new TarefaRepository(_context);
         }
 
