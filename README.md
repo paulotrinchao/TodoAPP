@@ -111,4 +111,4 @@ Exibido corretamente no Swagger via `SwaggerSchemaFilter`.
 **Paulo Trinchão**  
 Arquiteto de Software , especialista em desenvimento de soluções WEB, ambiente On primese e Cloud(Azure e AWS).  
 
-[LinkedIn](https://www.linkedin.com/in/paulo-trinchao) · [GitHub](https://github.com/paulotrinchao)
+[LinkedIn](https://www.linkedin.com/in/paulo-trinchao) · [GitHub](https://github.com/paulotrinchao) · [Docker Hub](https://hub.docker.com/repository/docker/prtrinchao/todo-api/general)
